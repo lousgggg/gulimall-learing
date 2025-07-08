@@ -1,0 +1,48 @@
+server:
+  port: 40000
+
+
+spring:
+  application:
+    name: gulimall-cart
+
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+        namespace: 654443d8-3b91-47d0-bb82-d7bac6446302
+
+    sentinel:
+      transport:
+        #配置sentinel dashboard地址
+        dashboard: localhost:8858
+        port: 8721
+
+  redis:
+    port: 6379
+    host: 127.0.0.1
+
+#开启feign对sentinel的支持
+feign:
+  sentinel:
+    enabled: true
+
+
+  session:
+    store-type: redis
+
+#配置线程池
+gulimall:
+  thread:
+    coreSize: 20
+    maxSize: 200
+    keepAliveTime: 10
+
+#暴露所有端点
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+
+
